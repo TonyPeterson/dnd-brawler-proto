@@ -1,9 +1,9 @@
 @tool
 extends CharacterBody2D
 
-const SPEED: float = 350.0
-const RADIUS: float = 24.0
-const BORDER_WIDTH: float = 3.0
+const SPEED: float = 200.0
+const RADIUS: float = 10.0
+const BORDER_WIDTH: float = 1.0
 const MAX_HP: int = 10
 const ATTACK_COOLDOWN_TIME: float = 0.25
 const HIT_FLASH_DURATION: float = 0.1
@@ -37,9 +37,9 @@ var _attack_cooldown: float = 0.0
 
 
 class DiceProjectile extends Area2D:
-	const PROJECTILE_SPEED: float = 650.0
+	const PROJECTILE_SPEED: float = 450.0
 	const SPIN_SPEED: float = 12.0
-	const HALF_SIZE: float = 6.0
+	const HALF_SIZE: float = 3.0
 	const LIFETIME: float = 2.0
 
 	var direction: Vector2 = Vector2.RIGHT
@@ -72,7 +72,7 @@ class DiceProjectile extends Area2D:
 	func _draw() -> void:
 		var rect := Rect2(-HALF_SIZE, -HALF_SIZE, HALF_SIZE * 2.0, HALF_SIZE * 2.0)
 		draw_rect(rect, Color.WHITE, true)
-		draw_rect(rect, dice_color.darkened(0.15), false, 2.0)
+		draw_rect(rect, dice_color.darkened(0.15), false, 1.0)
 		draw_circle(Vector2.ZERO, 1.8, Color(0.15, 0.15, 0.15))
 
 	func _on_body_entered(body: Node) -> void:
@@ -121,6 +121,9 @@ func _physics_process(delta: float) -> void:
 
 	velocity = input_dir * SPEED
 	move_and_slide()
+	
+	position.x = clamp(position.x, 10, 630)
+	position.y = clamp(position.y, 10, 350)
 
 	if Input.is_action_just_pressed("attack") and _attack_cooldown <= 0.0:
 		var shoot_dir := aim_dir

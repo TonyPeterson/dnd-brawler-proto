@@ -1,9 +1,8 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene format=3 uid="uid://dhntlc8uj86o3"]
 
 [ext_resource type="Script" uid="uid://btyo0hixn0hup" path="res://player.gd" id="1_player"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1"]
-radius = 24.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1"]
 properties/0/path = NodePath(".:position")
@@ -19,22 +18,23 @@ properties/3/path = NodePath(".:hp")
 properties/3/spawn = true
 properties/3/replication_mode = 1
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" unique_id=1121728761]
 script = ExtResource("1_player")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=341375767]
 shape = SubResource("CircleShape2D_1")
 
-[node name="NameLabel" type="Label" parent="."]
+[node name="NameLabel" type="Label" parent="." unique_id=438099156]
 offset_left = -80.0
-offset_top = -62.0
+offset_top = -50.0
 offset_right = 80.0
-offset_bottom = -38.0
+offset_bottom = -26.0
+theme_override_font_sizes/font_size = 11
 text = "Player"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HealthBar" type="Control" parent="."]
+[node name="HealthBar" type="Control" parent="." unique_id=275484997]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -25.0
@@ -42,5 +42,5 @@ offset_top = -38.0
 offset_right = 25.0
 offset_bottom = -32.0
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1757890369]
 replication_config = SubResource("SceneReplicationConfig_1")
