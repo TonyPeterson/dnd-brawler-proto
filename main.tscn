@@ -1,20 +1,23 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://bb758d0t6pqgs"]
 
 [ext_resource type="Script" uid="uid://b4fimde1s8yo0" path="res://main.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/arena.tscn" id="2"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=1404963652]
 script = ExtResource("1")
 
-[node name="Players" type="Node2D" parent="."]
+[node name="Arena" parent="." instance=ExtResource("2")]
 
-[node name="Projectiles" type="Node2D" parent="."]
+[node name="Players" type="Node2D" parent="." unique_id=92297771]
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+[node name="Projectiles" type="Node2D" parent="." unique_id=1460988509]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1038144679]
 spawn_path = NodePath("../Players")
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=592016400]
 
-[node name="MenuPanel" type="PanelContainer" parent="UI"]
+[node name="MenuPanel" type="PanelContainer" parent="UI" unique_id=486666062]
 custom_minimum_size = Vector2(320, 0)
 anchors_preset = 8
 anchor_left = 0.5
@@ -28,86 +31,85 @@ offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/MenuPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/MenuPanel" unique_id=2060916987]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MenuPanel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MenuPanel/MarginContainer" unique_id=1399545433]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="ConnectBox" type="VBoxContainer" parent="UI/MenuPanel/MarginContainer/VBoxContainer"]
+[node name="ConnectBox" type="VBoxContainer" parent="UI/MenuPanel/MarginContainer/VBoxContainer" unique_id=75316543]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="TitleLabel" type="Label" parent="UI/MenuPanel/MarginContainer/VBoxContainer/ConnectBox"]
+[node name="TitleLabel" type="Label" parent="UI/MenuPanel/MarginContainer/VBoxContainer/ConnectBox" unique_id=1584988173]
 layout_mode = 2
 text = "DnD Brawler - Connect"
 horizontal_alignment = 1
 
-[node name="HostButton" type="Button" parent="UI/MenuPanel/MarginContainer/VBoxContainer/ConnectBox"]
+[node name="HostButton" type="Button" parent="UI/MenuPanel/MarginContainer/VBoxContainer/ConnectBox" unique_id=1512985213]
 layout_mode = 2
 text = "Host Game"
 
-[node name="AddressInput" type="LineEdit" parent="UI/MenuPanel/MarginContainer/VBoxContainer/ConnectBox"]
+[node name="AddressInput" type="LineEdit" parent="UI/MenuPanel/MarginContainer/VBoxContainer/ConnectBox" unique_id=1596996428]
 layout_mode = 2
 text = "127.0.0.1"
 placeholder_text = "Server IP or Render URL"
 alignment = 1
 
-[node name="JoinButton" type="Button" parent="UI/MenuPanel/MarginContainer/VBoxContainer/ConnectBox"]
+[node name="JoinButton" type="Button" parent="UI/MenuPanel/MarginContainer/VBoxContainer/ConnectBox" unique_id=1465133151]
 layout_mode = 2
 text = "Join Game"
 
-[node name="CharacterSelectBox" type="VBoxContainer" parent="UI/MenuPanel/MarginContainer/VBoxContainer"]
+[node name="CharacterSelectBox" type="VBoxContainer" parent="UI/MenuPanel/MarginContainer/VBoxContainer" unique_id=304346312]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="CharTitleLabel" type="Label" parent="UI/MenuPanel/MarginContainer/VBoxContainer/CharacterSelectBox"]
+[node name="CharTitleLabel" type="Label" parent="UI/MenuPanel/MarginContainer/VBoxContainer/CharacterSelectBox" unique_id=286956828]
 layout_mode = 2
 text = "Select Your Character"
 horizontal_alignment = 1
 
-[node name="BobButton" type="Button" parent="UI/MenuPanel/MarginContainer/VBoxContainer/CharacterSelectBox"]
+[node name="BobButton" type="Button" parent="UI/MenuPanel/MarginContainer/VBoxContainer/CharacterSelectBox" unique_id=935136713]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.862745, 0.0784314, 0.235294, 1)
 theme_override_colors/font_focus_color = Color(0.862745, 0.0784314, 0.235294, 1)
 theme_override_colors/font_hover_color = Color(0.890196, 0.262745, 0.388235, 1)
 text = "Bob"
 
-[node name="LexyButton" type="Button" parent="UI/MenuPanel/MarginContainer/VBoxContainer/CharacterSelectBox"]
+[node name="LexyButton" type="Button" parent="UI/MenuPanel/MarginContainer/VBoxContainer/CharacterSelectBox" unique_id=461840940]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.576471, 0.439216, 0.858824, 1)
 theme_override_colors/font_focus_color = Color(0.576471, 0.439216, 0.858824, 1)
 theme_override_colors/font_hover_color = Color(0.661176, 0.551373, 0.887059, 1)
 text = "Lexy"
 
-[node name="TonyButton" type="Button" parent="UI/MenuPanel/MarginContainer/VBoxContainer/CharacterSelectBox"]
+[node name="TonyButton" type="Button" parent="UI/MenuPanel/MarginContainer/VBoxContainer/CharacterSelectBox" unique_id=638249787]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.117647, 0.564706, 1, 1)
 theme_override_colors/font_focus_color = Color(0.117647, 0.564706, 1, 1)
 theme_override_colors/font_hover_color = Color(0.294118, 0.651765, 1, 1)
 text = "Tony"
 
-[node name="FranButton" type="Button" parent="UI/MenuPanel/MarginContainer/VBoxContainer/CharacterSelectBox"]
+[node name="FranButton" type="Button" parent="UI/MenuPanel/MarginContainer/VBoxContainer/CharacterSelectBox" unique_id=1910754195]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.314, 0.784, 0.471, 1)
 theme_override_colors/font_focus_color = Color(0.314, 0.784, 0.471, 1)
 theme_override_colors/font_hover_color = Color(0.4512, 0.8272, 0.5768, 1)
 text = "Fran"
 
-[node name="DaveButton" type="Button" parent="UI/MenuPanel/MarginContainer/VBoxContainer/CharacterSelectBox"]
+[node name="DaveButton" type="Button" parent="UI/MenuPanel/MarginContainer/VBoxContainer/CharacterSelectBox" unique_id=824319703]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 0.843137, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 0.87451, 0.2, 1)
 text = "Dave"
 
-[node name="StatusLabel" type="Label" parent="UI/MenuPanel/MarginContainer/VBoxContainer"]
+[node name="StatusLabel" type="Label" parent="UI/MenuPanel/MarginContainer/VBoxContainer" unique_id=663873016]
 layout_mode = 2
 horizontal_alignment = 1
-

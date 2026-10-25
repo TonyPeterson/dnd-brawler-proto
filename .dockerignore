@@ -34,3 +34,8 @@ Desktop.ini
 *.tmp
 Dockerfile
 .dockerignore
+
+# Python bytecode cache
+__pycache__/
+*.pyc
+
