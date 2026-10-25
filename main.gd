@@ -1,7 +1,7 @@
 extends Node2D
 
 const PORT: int = 7000
-const DEFAULT_IP: String = "127.0.0.1"
+const DEFAULT_IP: String = "dnd-brawler-server.onrender.com"
 const INPUT_DEADZONE: float = 0.2
 
 const PlayerScript := preload("res://player.gd")
@@ -41,17 +41,16 @@ func _ready() -> void:
 
 
 func _start_headless_server() -> void:
-	var port: int = int(OS.get_environment("PORT")) if OS.has_environment("PORT") else PORT
 	var peer := WebSocketMultiplayerPeer.new()
-	var err := peer.create_server(port)
+	var err := peer.create_server(7000)
 	if err != OK:
-		print("Failed to start headless WebSocket server on port %d (err %d)" % [port, err])
+		print("Failed to start headless WebSocket server on port %d (err %d)" % [7000, err])
 		return
 
 	multiplayer.multiplayer_peer = peer
 	if ui_layer:
 		ui_layer.visible = false
-	print("Headless WebSocket dedicated server started on port %d" % port)
+	print("Headless WebSocket dedicated server started on port 7000")
 
 
 func _register_input_actions() -> void:
@@ -217,6 +216,14 @@ func _format_websocket_url(raw_input: String) -> String:
 	var ip := raw_input.strip_edges()
 	if ip.is_empty():
 		ip = DEFAULT_IP
+
+	if ip.begins_with("https://"):
+		ip = ip.trim_prefix("https://")
+	elif ip.begins_with("http://"):
+		ip = ip.trim_prefix("http://")
+
+	while ip.ends_with("/"):
+		ip = ip.left(-1)
 
 	if ip.begins_with("ws://") or ip.begins_with("wss://"):
 		return ip
