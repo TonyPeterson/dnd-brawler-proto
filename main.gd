@@ -78,6 +78,28 @@ func _register_input_actions() -> void:
 		joy_event.axis_value = def["axis_value"]
 		InputMap.action_add_event(action_name, joy_event)
 
+	if InputMap.has_action("attack"):
+		InputMap.erase_action("attack")
+	InputMap.add_action("attack", INPUT_DEADZONE)
+
+	var space_event := InputEventKey.new()
+	space_event.keycode = KEY_SPACE
+	space_event.physical_keycode = KEY_SPACE
+	InputMap.action_add_event("attack", space_event)
+
+	var mouse_event := InputEventMouseButton.new()
+	mouse_event.button_index = MOUSE_BUTTON_LEFT
+	InputMap.action_add_event("attack", mouse_event)
+
+	var joy_btn_event := InputEventJoypadButton.new()
+	joy_btn_event.button_index = JOY_BUTTON_A
+	InputMap.action_add_event("attack", joy_btn_event)
+
+	var joy_trigger_event := InputEventJoypadMotion.new()
+	joy_trigger_event.axis = JOY_AXIS_TRIGGER_RIGHT
+	joy_trigger_event.axis_value = 1.0
+	InputMap.action_add_event("attack", joy_trigger_event)
+
 
 func _setup_world_and_spawner() -> void:
 	players_container = Node2D.new()
@@ -152,7 +174,7 @@ func _build_ui() -> void:
 
 	ip_input = LineEdit.new()
 	ip_input.name = "AddressInput"
-	ip_input.text = DEFAULT_IP
+	ip_input.text = DEFAULT_IP if OS.has_feature("web") and not ("--local" in OS.get_cmdline_args() or "--local" in OS.get_cmdline_user_args()) else "127.0.0.1"
 	ip_input.placeholder_text = "Server IP or Render URL"
 	ip_input.alignment = HORIZONTAL_ALIGNMENT_CENTER
 	connect_box.add_child(ip_input)
