@@ -1,0 +1,36 @@
+# Git & version control
+.git/
+.github/
+.gitignore
+.gitattributes
+
+# Godot cache / import directories
+.godot/
+.import/
+
+# Build / export artifacts
+build/
+builds/
+export/
+exports/
+*.exe
+*.pck
+*.apk
+*.aab
+*.dmg
+*.zip
+*.tar.gz
+
+# System / OS / Editor temp files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.log
+*.tmp
+Dockerfile
+.dockerignore
