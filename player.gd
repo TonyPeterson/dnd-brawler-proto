@@ -1,3 +1,4 @@
+@tool
 extends CharacterBody2D
 
 const SPEED: float = 350.0
@@ -7,14 +8,15 @@ const MAX_HP: int = 10
 const ATTACK_COOLDOWN_TIME: float = 0.25
 const HIT_FLASH_DURATION: float = 0.1
 
-@export var player_name: String = "":
+@export var player_name: String = "Player":
 	set(value):
 		player_name = value
-		if _name_label:
-			_name_label.text = player_name
+		var lbl := get_node_or_null("NameLabel") as Label
+		if lbl:
+			lbl.text = player_name
 		queue_redraw()
 
-@export var player_color: Color = Color.WHITE:
+@export var player_color: Color = Color.DODGER_BLUE:
 	set(value):
 		player_color = value
 		queue_redraw()
@@ -28,9 +30,10 @@ var aim_dir: Vector2 = Vector2.RIGHT
 var hit_flash_timer: float = 0.0
 var _attack_cooldown: float = 0.0
 
-var _name_label: Label
-var _collision_shape: CollisionShape2D
-var _synchronizer: MultiplayerSynchronizer
+@onready var name_label: Label = $NameLabel
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var health_bar: Control = $HealthBar
+@onready var synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
 
 
 class DiceProjectile extends Area2D:
@@ -80,54 +83,23 @@ class DiceProjectile extends Area2D:
 			queue_free()
 
 
-func _init() -> void:
-	# CollisionShape2D with a CircleShape2D matching the player dot radius
-	_collision_shape = CollisionShape2D.new()
-	_collision_shape.name = "CollisionShape2D"
-	var circle_shape := CircleShape2D.new()
-	circle_shape.radius = RADIUS
-	_collision_shape.shape = circle_shape
-	add_child(_collision_shape)
-
-	# Centered Label above the dot for the player's name
-	_name_label = Label.new()
-	_name_label.name = "NameLabel"
-	_name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_name_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	_name_label.size = Vector2(160.0, 24.0)
-	_name_label.position = Vector2(-80.0, -RADIUS - 38.0)
-	_name_label.text = player_name
-	add_child(_name_label)
-
-	# Programmatically create and configure MultiplayerSynchronizer
-	_synchronizer = MultiplayerSynchronizer.new()
-	_synchronizer.name = "MultiplayerSynchronizer"
-
-	var replication_config := SceneReplicationConfig.new()
-	for prop in [":position", ":player_name", ":player_color", ":hp"]:
-		var prop_path := NodePath(prop)
-		replication_config.add_property(prop_path)
-		replication_config.property_set_spawn(prop_path, true)
-		replication_config.property_set_replication_mode(
-			prop_path,
-			SceneReplicationConfig.REPLICATION_MODE_ALWAYS
-		)
-
-	_synchronizer.replication_config = replication_config
-	add_child(_synchronizer)
-
-
 func _enter_tree() -> void:
-	set_multiplayer_authority(name.to_int())
+	if Engine.is_editor_hint():
+		return
+	var peer_id := name.to_int()
+	if peer_id > 0:
+		set_multiplayer_authority(peer_id)
 
 
 func _ready() -> void:
-	if _name_label:
-		_name_label.text = player_name
+	if name_label:
+		name_label.text = player_name
 	queue_redraw()
 
 
 func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
 	if hit_flash_timer > 0.0:
 		hit_flash_timer = maxf(0.0, hit_flash_timer - delta)
 		if hit_flash_timer == 0.0:
@@ -135,6 +107,8 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
 	if not is_multiplayer_authority():
 		return
 
@@ -163,7 +137,11 @@ func _physics_process(delta: float) -> void:
 func spawn_dice_projectile(pos: Vector2, dir: Vector2, shooter_id: int) -> void:
 	var norm_dir := dir.normalized() if dir.length_squared() > 0.0001 else Vector2.RIGHT
 	var projectile := DiceProjectile.new(pos, norm_dir, shooter_id, player_color)
-	var container := get_parent() if get_parent() else get_tree().current_scene
+	var container: Node = get_node_or_null("../../Projectiles")
+	if not container and get_tree().current_scene:
+		container = get_tree().current_scene.get_node_or_null("Projectiles")
+	if not container:
+		container = get_parent() if get_parent() else get_tree().current_scene
 	container.add_child(projectile)
 
 

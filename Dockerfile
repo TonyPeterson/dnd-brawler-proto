@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-ARG GODOT_VERSION=4.3
+ARG GODOT_VERSION=4.7.2
 ENV GODOT_VERSION=${GODOT_VERSION}
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
