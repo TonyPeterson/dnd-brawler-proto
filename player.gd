@@ -25,6 +25,7 @@ func _ready():
 	
 	# 4. Set the UI elements
 	$NameLabel.text = player_name
+	anim.play("idle")
 	# $AnimatedSprite2D.modulate = player_color
 
 func _physics_process(delta: float) -> void:

@@ -26,6 +26,9 @@ properties/4/replication_mode = 1
 properties/5/path = NodePath("AnimatedSprite2D:flip_h")
 properties/5/spawn = true
 properties/5/replication_mode = 1
+properties/6/path = NodePath("AnimatedSprite2D:frame")
+properties/6/spawn = true
+properties/6/replication_mode = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
 atlas = ExtResource("2_onrkg")
@@ -134,4 +137,4 @@ replication_config = SubResource("SceneReplicationConfig_1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2021770680]
 sprite_frames = SubResource("SpriteFrames_jti01")
 animation = &"walk"
-frame_progress = 0.5345833
+frame_progress = 0.35763246
