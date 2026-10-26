@@ -30,6 +30,14 @@ height = 82.0
 radius = 8.0
 height = 82.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wl4x5"]
+radius = 8.0
+height = 160.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_olpmc"]
+radius = 8.0
+height = 160.0
+
 [node name="Arena" type="Node2D" unique_id=262401300]
 
 [node name="Background" type="Node2D" parent="." unique_id=1273685036]
@@ -98,3 +106,27 @@ shape = SubResource("CapsuleShape2D_e05a3")
 position = Vector2(614, 193)
 rotation = 1.5707964
 mesh = SubResource("CapsuleMesh_wl4x5")
+
+[node name="Platform4" type="StaticBody2D" parent="." unique_id=1138912236]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4" unique_id=170077288]
+position = Vector2(438, 146)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_wl4x5")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform4" unique_id=1167442830]
+position = Vector2(438, 146)
+rotation = 1.5707964
+mesh = SubResource("CapsuleMesh_olpmc")
+
+[node name="Platform5" type="StaticBody2D" parent="." unique_id=1632486306]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform5" unique_id=177796647]
+position = Vector2(187.00002, 146)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_wl4x5")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform5" unique_id=208187067]
+position = Vector2(187.00002, 146)
+rotation = 1.5707964
+mesh = SubResource("CapsuleMesh_olpmc")
