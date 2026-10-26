@@ -1,9 +1,100 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://ehptdu4y851x"]
 
-[node name="Arena" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jti01"]
+size = Vector2(654, 59)
 
-[node name="Background" type="Node2D" parent="."]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ug7gw"]
+size = Vector2(28, 345.5)
 
-[node name="Props" type="Node2D" parent="."]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_olpmc"]
+radius = 8.0
+height = 82.0
 
-[node name="Walls" type="Node2D" parent="."]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jti01"]
+radius = 8.0
+height = 82.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ug7gw"]
+radius = 8.0
+height = 82.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_e05a3"]
+radius = 8.0
+height = 82.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e05a3"]
+radius = 8.0
+height = 82.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wl4x5"]
+radius = 8.0
+height = 82.0
+
+[node name="Arena" type="Node2D" unique_id=262401300]
+
+[node name="Background" type="Node2D" parent="." unique_id=1273685036]
+
+[node name="Props" type="Node2D" parent="." unique_id=1559221000]
+
+[node name="Walls" type="Node2D" parent="." unique_id=955568341]
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=849011130]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1227926972]
+position = Vector2(317, 333)
+shape = SubResource("RectangleShape2D_jti01")
+
+[node name="ColorRect" type="ColorRect" parent="Floor" unique_id=1069916671]
+offset_left = -10.0
+offset_top = 304.0
+offset_right = 643.0
+offset_bottom = 363.0
+color = Color(0.1955451, 0.1955451, 0.19554508, 1)
+
+[node name="Wall1" type="StaticBody2D" parent="." unique_id=2061433038]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall1" unique_id=1022210608]
+position = Vector2(4, 189.75)
+shape = SubResource("RectangleShape2D_ug7gw")
+
+[node name="Wall2" type="StaticBody2D" parent="." unique_id=528858584]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2" unique_id=1617500612]
+position = Vector2(639, 189.75)
+shape = SubResource("RectangleShape2D_ug7gw")
+
+[node name="Platform1" type="StaticBody2D" parent="." unique_id=1925420197]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1" unique_id=1768913151]
+position = Vector2(479, 278)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_olpmc")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform1" unique_id=1507089050]
+position = Vector2(479, 278)
+rotation = 1.5707964
+mesh = SubResource("CapsuleMesh_jti01")
+
+[node name="Platform2" type="StaticBody2D" parent="." unique_id=1275244346]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2" unique_id=469325177]
+position = Vector2(547, 238)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ug7gw")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform2" unique_id=1712981538]
+position = Vector2(547, 238)
+rotation = 1.5707964
+mesh = SubResource("CapsuleMesh_e05a3")
+
+[node name="Platform3" type="StaticBody2D" parent="." unique_id=2010723632]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3" unique_id=1660707952]
+position = Vector2(614, 193)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_e05a3")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform3" unique_id=2080599844]
+position = Vector2(614, 193)
+rotation = 1.5707964
+mesh = SubResource("CapsuleMesh_wl4x5")
