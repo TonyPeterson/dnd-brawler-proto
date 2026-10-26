@@ -11,10 +11,19 @@ var gravity = 980.0
 @onready var anim = $AnimatedSprite2D
 
 # 1. Assign network ownership based on the peer ID
-func _enter_tree():
-	set_multiplayer_authority(name.to_int())
+# DELETE the _enter_tree() function completely!
 
 func _ready():
+	# 1. Grab the true peer ID now that the server has officially named the node
+	var peer_id = name.to_int()
+	
+	# 2. Assign physics authority
+	set_multiplayer_authority(peer_id)
+	
+	# 3. Explicitly tell the network synchronizer who owns this node's network data
+	$MultiplayerSynchronizer.set_multiplayer_authority(peer_id)
+	
+	# 4. Set the UI elements
 	$NameLabel.text = player_name
 	# $AnimatedSprite2D.modulate = player_color
 
