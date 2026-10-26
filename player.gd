@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var player_name: String = "Player"
 var player_color: Color = Color.WHITE
+var hp: int = 100
 
 const SPEED = 150.0
 const JUMP_VELOCITY = -300.0
