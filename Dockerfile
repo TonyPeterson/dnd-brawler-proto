@@ -23,4 +23,5 @@ COPY . /app
 ENV PORT=10000
 EXPOSE 10000
 
+RUN godot --headless --editor --quit
 CMD ["sh", "-c", "godot --headless --path /app & python3 -u /app/server_proxy.py"]
