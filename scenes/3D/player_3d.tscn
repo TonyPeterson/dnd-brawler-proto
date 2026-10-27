@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://3ttj0nbe7bja"]
 
-[ext_resource type="PackedScene" uid="uid://ccot6lsnqio8r" path="res://animation_test.blend" id="1_dinrc"]
 [ext_resource type="Script" uid="uid://d25esfmrsunjf" path="res://scenes/3D/player_3d.gd" id="1_yqkck"]
+[ext_resource type="PackedScene" uid="uid://ow144cw02lgs" path="res://animation_test.glb" id="2_6n5me"]
 [ext_resource type="Material" uid="uid://r7lodkwedkq6" path="res://art/characters/bob_mat1.tres" id="3_6n5me"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yqkck"]
@@ -15,10 +15,10 @@ script = ExtResource("1_yqkck")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.024496064, 0)
 shape = SubResource("CapsuleShape3D_yqkck")
 
-[node name="animation_test" parent="." unique_id=554943126 instance=ExtResource("1_dinrc")]
+[node name="animation_test" parent="." unique_id=456540750 instance=ExtResource("2_6n5me")]
 transform = Transform3D(-0.1, 0, -8.742278e-09, 0, 0.1, 0, 8.742278e-09, 0, -0.1, 0, 0, 0)
 
-[node name="Cube" parent="animation_test/rig_001/Skeleton3D" parent_id_path=PackedInt32Array(554943126, 1347517595) index="0" unique_id=2013407149]
+[node name="Cube" parent="animation_test" index="0" unique_id=1694793989]
 material_override = ExtResource("3_6n5me")
 
 [editable path="animation_test"]
