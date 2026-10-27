@@ -3,7 +3,7 @@ extends Node2D
 const PORT: int = 7000
 const DEFAULT_IP: String = "dnd-brawler-server.onrender.com"
 
-const PlayerScene: PackedScene = preload("res://player.tscn")
+const PlayerScene: PackedScene = preload("res://scenes/2D/player.tscn")
 
 const CHARACTERS: Dictionary = {
 	"Bob": Color.CRIMSON,
@@ -221,3 +221,8 @@ func _on_peer_disconnected(peer_id: int) -> void:
 	var player_node := players_container.get_node_or_null(str(peer_id))
 	if player_node:
 		player_node.queue_free()
+
+func _input(event):
+	if event.is_action_pressed("swap_mode"):
+		# This forces the scene to change directly to your new 3D world
+		get_tree().change_scene_to_file("res://scenes/3D/world_3d.tscn")

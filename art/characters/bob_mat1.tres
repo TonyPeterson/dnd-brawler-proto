@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://r7lodkwedkq6"]
+
+[ext_resource type="Texture2D" uid="uid://s2jd8i05gro2" path="res://art/characters/bob_diffuse.png" id="1_skdkj"]
+
+[resource]
+albedo_texture = ExtResource("1_skdkj")

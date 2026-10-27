@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://3ttj0nbe7bja"]
+
+[ext_resource type="PackedScene" uid="uid://ccot6lsnqio8r" path="res://animation_test.blend" id="1_dinrc"]
+[ext_resource type="Script" uid="uid://d25esfmrsunjf" path="res://scenes/3D/player_3d.gd" id="1_yqkck"]
+[ext_resource type="Material" uid="uid://r7lodkwedkq6" path="res://art/characters/bob_mat1.tres" id="3_6n5me"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yqkck"]
+radius = 0.057128906
+height = 0.6660156
+
+[node name="Player3D" type="CharacterBody3D" unique_id=1782919087]
+script = ExtResource("1_yqkck")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=243030822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.024496064, 0)
+shape = SubResource("CapsuleShape3D_yqkck")
+
+[node name="animation_test" parent="." unique_id=554943126 instance=ExtResource("1_dinrc")]
+transform = Transform3D(-0.1, 0, -8.742278e-09, 0, 0.1, 0, 8.742278e-09, 0, -0.1, 0, 0, 0)
+
+[node name="Cube" parent="animation_test/rig_001/Skeleton3D" parent_id_path=PackedInt32Array(554943126, 1347517595) index="0" unique_id=2013407149]
+material_override = ExtResource("3_6n5me")
+
+[editable path="animation_test"]
