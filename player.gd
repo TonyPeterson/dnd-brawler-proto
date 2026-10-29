@@ -8,6 +8,8 @@ const SPEED = 150.0
 const JUMP_VELOCITY = -300.0
 var gravity = 980.0
 
+var use_3d_sprites = false
+
 @onready var anim = $AnimatedSprite2D
 
 # 1. Assign network ownership based on the peer ID
@@ -25,7 +27,7 @@ func _ready():
 	
 	# 4. Set the UI elements
 	$NameLabel.text = player_name
-	anim.play("idle")
+	anim.play("3d_idle")
 	# $AnimatedSprite2D.modulate = player_color
 
 func _physics_process(delta: float) -> void:
@@ -36,6 +38,9 @@ func _physics_process(delta: float) -> void:
 	# Apply Gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		
+	if Input.is_action_just_pressed("swap_style"):
+		use_3d_sprites = !use_3d_sprites
 
 	# Handle Jump
 	if Input.is_action_just_pressed("move_up") and is_on_floor():
@@ -46,10 +51,18 @@ func _physics_process(delta: float) -> void:
 	
 	if direction:
 		velocity.x = direction * SPEED
-		anim.play("walk")
-		anim.flip_h = direction < 0 
+		anim.flip_h = direction < 0
+		
+		if use_3d_sprites:
+			anim.play("3d_walk")
+		else:
+			anim.play("walk")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		anim.play("idle")
+		
+		if use_3d_sprites:
+			anim.play("3d_idle")
+		else:
+			anim.play("idle")
 
 	move_and_slide()
