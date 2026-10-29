@@ -211,4 +211,4 @@ replication_config = SubResource("SceneReplicationConfig_1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2021770680]
 sprite_frames = SubResource("SpriteFrames_jti01")
 animation = &"3d_walk"
-frame_progress = 0.8578231
+frame_progress = 0.7318576
