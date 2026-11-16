@@ -1,14 +1,13 @@
 [gd_scene format=3 uid="uid://ehptdu4y851x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jti01"]
-size = Vector2(654, 59)
+size = Vector2(2000, 59)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ug7gw"]
 size = Vector2(28, 345.5)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_olpmc"]
-radius = 8.0
-height = 82.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdbcp"]
+size = Vector2(82, 16)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jti01"]
 radius = 8.0
@@ -49,13 +48,13 @@ height = 160.0
 [node name="Floor" type="StaticBody2D" parent="." unique_id=849011130]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1227926972]
-position = Vector2(317, 333)
+position = Vector2(992, 333)
 shape = SubResource("RectangleShape2D_jti01")
 
 [node name="ColorRect" type="ColorRect" parent="Floor" unique_id=1069916671]
 offset_left = -10.0
 offset_top = 304.0
-offset_right = 643.0
+offset_right = 1990.0
 offset_bottom = 363.0
 color = Color(0.1955451, 0.1955451, 0.19554508, 1)
 
@@ -68,65 +67,89 @@ shape = SubResource("RectangleShape2D_ug7gw")
 [node name="Wall2" type="StaticBody2D" parent="." unique_id=528858584]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2" unique_id=1617500612]
-position = Vector2(639, 189.75)
+position = Vector2(1977, 189.75)
 shape = SubResource("RectangleShape2D_ug7gw")
 
 [node name="Platform1" type="StaticBody2D" parent="." unique_id=1925420197]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1" unique_id=1768913151]
-position = Vector2(479, 278)
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_olpmc")
+position = Vector2(466, 272)
+shape = SubResource("RectangleShape2D_kdbcp")
+one_way_collision = true
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Platform1" unique_id=1507089050]
-position = Vector2(479, 278)
+position = Vector2(466, 272)
 rotation = 1.5707964
 mesh = SubResource("CapsuleMesh_jti01")
 
 [node name="Platform2" type="StaticBody2D" parent="." unique_id=1275244346]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2" unique_id=469325177]
-position = Vector2(547, 238)
+position = Vector2(566, 230)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ug7gw")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Platform2" unique_id=1712981538]
-position = Vector2(547, 238)
+position = Vector2(566, 230)
 rotation = 1.5707964
 mesh = SubResource("CapsuleMesh_e05a3")
 
 [node name="Platform3" type="StaticBody2D" parent="." unique_id=2010723632]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3" unique_id=1660707952]
-position = Vector2(614, 193)
+position = Vector2(629, 187)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_e05a3")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Platform3" unique_id=2080599844]
-position = Vector2(614, 193)
+position = Vector2(629, 187)
 rotation = 1.5707964
 mesh = SubResource("CapsuleMesh_wl4x5")
 
 [node name="Platform4" type="StaticBody2D" parent="." unique_id=1138912236]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4" unique_id=170077288]
-position = Vector2(438, 146)
+position = Vector2(458, 137)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_wl4x5")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Platform4" unique_id=1167442830]
-position = Vector2(438, 146)
+position = Vector2(458, 137)
 rotation = 1.5707964
 mesh = SubResource("CapsuleMesh_olpmc")
 
 [node name="Platform5" type="StaticBody2D" parent="." unique_id=1632486306]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform5" unique_id=177796647]
-position = Vector2(187.00002, 146)
+position = Vector2(995, 262)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_wl4x5")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Platform5" unique_id=208187067]
-position = Vector2(187.00002, 146)
+position = Vector2(995, 262)
+rotation = 1.5707964
+mesh = SubResource("CapsuleMesh_olpmc")
+
+[node name="Platform6" type="StaticBody2D" parent="." unique_id=381635698]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform6" unique_id=20852229]
+position = Vector2(1354, 294)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_wl4x5")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform6" unique_id=230318265]
+position = Vector2(1354, 294)
+rotation = 1.5707964
+mesh = SubResource("CapsuleMesh_olpmc")
+
+[node name="Platform7" type="StaticBody2D" parent="." unique_id=792667940]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform7" unique_id=2111726545]
+position = Vector2(1685, 269)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_wl4x5")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform7" unique_id=1201607143]
+position = Vector2(1685, 269)
 rotation = 1.5707964
 mesh = SubResource("CapsuleMesh_olpmc")

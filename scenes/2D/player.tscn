@@ -212,3 +212,13 @@ replication_config = SubResource("SceneReplicationConfig_1")
 sprite_frames = SubResource("SpriteFrames_jti01")
 animation = &"3d_walk"
 frame_progress = 0.7318576
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1923653979]
+limit_left = 4
+limit_right = 1980
+limit_bottom = 720
+position_smoothing_enabled = true
+drag_vertical_enabled = true
+drag_vertical_offset = -0.5
+drag_top_margin = 0.6
+drag_bottom_margin = 0.6

@@ -10,6 +10,10 @@ var gravity = 980.0
 
 var use_3d_sprites = false
 
+@onready var camera = $Camera2D
+const LOOK_AHEAD = 90.0 # How many pixels ahead of the player the camera should look
+const PAN_SPEED = .35 # How many seconds it takes the camera to glide over
+
 @onready var anim = $AnimatedSprite2D
 
 # 1. Assign network ownership based on the peer ID
@@ -52,6 +56,17 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction * SPEED
 		anim.flip_h = direction < 0
+		
+		# --- NEW CAMERA PAN LOGIC ---
+		# Determine if we should look right (positive) or left (negative)
+		var target_x = LOOK_AHEAD if direction > 0 else -LOOK_AHEAD
+		
+		# If the camera isn't already heading to that side, trigger a smooth pan
+		if camera.offset.x != target_x:
+			var tween = create_tween()
+			# Tween.TRANS_SINE makes the camera ease in and out smoothly
+			tween.tween_property(camera, "position:x", target_x, PAN_SPEED).set_trans(Tween.TRANS_SINE)
+		# ----------------------------
 		
 		if use_3d_sprites:
 			anim.play("3d_walk")
