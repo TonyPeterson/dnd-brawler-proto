@@ -37,6 +37,9 @@ height = 160.0
 radius = 8.0
 height = 160.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epxjf"]
+size = Vector2(160, 16)
+
 [node name="Arena" type="Node2D" unique_id=262401300]
 
 [node name="Background" type="Node2D" parent="." unique_id=1273685036]
@@ -47,10 +50,6 @@ height = 160.0
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=849011130]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1227926972]
-position = Vector2(992, 333)
-shape = SubResource("RectangleShape2D_jti01")
-
 [node name="ColorRect" type="ColorRect" parent="Floor" unique_id=1069916671]
 offset_left = -10.0
 offset_top = 304.0
@@ -58,7 +57,18 @@ offset_right = 1990.0
 offset_bottom = 363.0
 color = Color(0.1955451, 0.1955451, 0.19554508, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1227926972]
+position = Vector2(992, 333)
+shape = SubResource("RectangleShape2D_jti01")
+
 [node name="Wall1" type="StaticBody2D" parent="." unique_id=2061433038]
+
+[node name="ColorRect" type="ColorRect" parent="Wall1" unique_id=1007019097]
+offset_left = -8.0
+offset_top = -22.0
+offset_right = 18.0
+offset_bottom = 361.0
+color = Color(0.19607843, 0.19607843, 0.19607843, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall1" unique_id=1022210608]
 position = Vector2(4, 189.75)
@@ -66,8 +76,15 @@ shape = SubResource("RectangleShape2D_ug7gw")
 
 [node name="Wall2" type="StaticBody2D" parent="." unique_id=528858584]
 
+[node name="ColorRect" type="ColorRect" parent="Wall2" unique_id=1108350920]
+offset_left = 1964.0
+offset_top = -22.0
+offset_right = 1990.0
+offset_bottom = 361.0
+color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2" unique_id=1617500612]
-position = Vector2(1977, 189.75)
+position = Vector2(1977, 190)
 shape = SubResource("RectangleShape2D_ug7gw")
 
 [node name="Platform1" type="StaticBody2D" parent="." unique_id=1925420197]
@@ -78,6 +95,7 @@ shape = SubResource("RectangleShape2D_kdbcp")
 one_way_collision = true
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Platform1" unique_id=1507089050]
+modulate = Color(0.46099514, 0.46099484, 0.46099496, 1)
 position = Vector2(466, 272)
 rotation = 1.5707964
 mesh = SubResource("CapsuleMesh_jti01")
@@ -121,12 +139,13 @@ mesh = SubResource("CapsuleMesh_olpmc")
 [node name="Platform5" type="StaticBody2D" parent="." unique_id=1632486306]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform5" unique_id=177796647]
-position = Vector2(995, 262)
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_wl4x5")
+position = Vector2(995, 266)
+shape = SubResource("RectangleShape2D_epxjf")
+one_way_collision = true
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Platform5" unique_id=208187067]
-position = Vector2(995, 262)
+modulate = Color(0.4627451, 0.4627451, 0.4627451, 1)
+position = Vector2(995, 266)
 rotation = 1.5707964
 mesh = SubResource("CapsuleMesh_olpmc")
 
